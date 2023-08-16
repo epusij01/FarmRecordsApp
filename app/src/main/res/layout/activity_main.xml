@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="farmRecordsViewModel"
+            type="com.esj.farmrecordsapp.AnimalRecordsViewModel" />
+    </data>
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+
+    <LinearLayout
+        android:id="@+id/linear"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/profile_image"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/rabbit"
+            tools:src="@drawable/rabbit"
+            app:civ_border_color="#ff000000"
+            app:civ_border_width="2dp" />
+
+
+
+        <Button
+            android:id="@+id/plus"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@drawable/plus_symbol_button"
+            android:layout_marginStart="30dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="-25dp" />
+
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:text="ANIMAL ID:"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/animalID"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@={farmRecordsViewModel.name}"
+                android:hint="Enter animal name/ID"
+                android:inputType="textPersonName"
+                android:textColor="@color/black"
+                android:textColorHint="@color/black" />
+        </LinearLayout>
+
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:text="FARM OPERATION:"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/farmOperationId"
+                android:layout_width="match_parent"
+                android:text="@={farmRecordsViewModel.operation}"
+                android:layout_height="wrap_content"
+                android:hint="Enter operation"
+                android:inputType="textPersonName"
+                android:textColor="@color/black"
+                android:textColorHint="@color/black" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:text="DONE BY: "
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/doerId"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@={farmRecordsViewModel.doer}"
+                android:hint="Name of person"
+                android:inputType="textPersonName"
+                android:textColor="@color/black"
+                android:textColorHint="@color/black" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="5dp"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/saveButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginEnd="5dp"
+                android:background="@color/design_default_color_primary"
+                android:padding="5dp"
+                android:text="@{farmRecordsViewModel.saveOrUpdateButtonText}"
+                android:onClick="@{()->farmRecordsViewModel.saveOrUpdate()}"
+                android:textColor="@color/white" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/clearButton"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:layout_marginStart="5dp"
+                android:background="@color/design_default_color_primary"
+                android:padding="5dp"
+                android:onClick="@{()->farmRecordsViewModel.saveOrUpdate()}"
+                android:text="@{farmRecordsViewModel.clearAllOrDeleteButtonText}"
+                android:textColor="@color/white" />
+
+        </LinearLayout>
+
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewId"
+            android:layout_width="match_parent"
+            android:layout_margin="5dp"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+
+</RelativeLayout>
+
+</layout>
+
+
+    <!--<?xml version="1.0" encoding="utf-8"?>-->
+    <!--<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--    xmlns:app="http://schemas.android.com/apk/res-auto"-->
+    <!--    xmlns:tools="http://schemas.android.com/tools"-->
+    <!--    android:layout_width="match_parent"-->
+    <!--    android:layout_height="match_parent"-->
+    <!--    android:background="#F8F7FA"-->
+    <!--    android:orientation="horizontal"-->
+    <!--    tools:context=".MainActivity">-->
+
+    <!--    <EditText-->
+    <!--        android:id="@+id/name_edit_text"-->
+    <!--        android:layout_width="299dp"-->
+    <!--        android:layout_height="0dp"-->
+    <!--        android:layout_marginBottom="79dp"-->
+    <!--        android:ems="10"-->
+    <!--        android:hint="Name"-->
+    <!--        android:inputType="text"-->
+    <!--        android:textColor="@color/black"-->
+    <!--        app:layout_constraintBottom_toTopOf="@+id/save_button"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintHorizontal_bias="0.0"-->
+    <!--        app:layout_constraintStart_toEndOf="@+id/textView"-->
+    <!--        app:layout_constraintTop_toBottomOf="@+id/operation_edit_text" />-->
+
+    <!--    <TextView-->
+    <!--        android:id="@+id/textView2"-->
+    <!--        android:layout_width="108dp"-->
+    <!--        android:layout_height="45dp"-->
+    <!--        android:text="Done By:"-->
+    <!--        android:textAlignment="textStart"-->
+    <!--        android:textColor="@color/black"-->
+    <!--        android:textStyle="bold"-->
+    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--        app:layout_constraintEnd_toStartOf="@+id/operation_edit_text"-->
+    <!--        app:layout_constraintHorizontal_bias="0.0"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toTopOf="parent" />-->
+
+    <!--    <de.hdodenhof.circleimageview.CircleImageView-->
+    <!--        android:id="@+id/image_view_id"-->
+    <!--        android:layout_width="222dp"-->
+    <!--        android:layout_height="0dp"-->
+    <!--        android:layout_marginStart="30dp"-->
+    <!--        android:layout_marginEnd="30dp"-->
+    <!--        android:layout_marginBottom="40dp"-->
+    <!--        android:src="@drawable/rabbit"-->
+    <!--        app:civ_border_color="@color/black"-->
+    <!--        app:civ_border_width="3dp"-->
+    <!--        app:layout_constraintBottom_toTopOf="@+id/operation_edit_text"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintHorizontal_bias="0.496"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toTopOf="parent"-->
+    <!--        app:layout_constraintVertical_bias="0.0" />-->
+
+    <!--    <TextView-->
+    <!--        android:id="@+id/textView"-->
+    <!--        android:layout_width="108dp"-->
+    <!--        android:layout_height="0dp"-->
+    <!--        android:text="FARM OPERATION:"-->
+    <!--        android:textAlignment="textStart"-->
+    <!--        android:textColor="@color/black"-->
+    <!--        android:textStyle="bold"-->
+    <!--        app:layout_constraintBottom_toBottomOf="@+id/operation_edit_text"-->
+    <!--        app:layout_constraintEnd_toStartOf="@+id/operation_edit_text"-->
+    <!--        app:layout_constraintHorizontal_bias="0.5"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toTopOf="@+id/operation_edit_text" />-->
+
+    <!--    <EditText-->
+    <!--        android:id="@+id/operation_edit_text"-->
+    <!--        android:layout_width="299dp"-->
+    <!--        android:layout_height="0dp"-->
+    <!--        android:layout_marginBottom="40dp"-->
+    <!--        android:ems="10"-->
+    <!--        android:hint="@string/farm_operation_text"-->
+    <!--        android:inputType="text"-->
+    <!--        android:textColor="@color/black"-->
+    <!--        app:layout_constraintBottom_toTopOf="@+id/name_edit_text"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintHorizontal_bias="0.5"-->
+    <!--        app:layout_constraintStart_toEndOf="@+id/textView"-->
+    <!--        app:layout_constraintTop_toBottomOf="@+id/image_view_id" />-->
+
+    <!--    <Button-->
+    <!--        android:id="@+id/save_button"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_marginStart="21dp"-->
+    <!--        android:layout_marginBottom="216dp"-->
+    <!--        android:text="Save record"-->
+    <!--        android:textAllCaps="true"-->
+    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toBottomOf="@+id/name_edit_text" />-->
+
+    <!--    <Button-->
+    <!--        android:id="@+id/delete_button"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_marginEnd="50dp"-->
+    <!--        android:text="delete record"-->
+    <!--        android:textAllCaps="true"-->
+    <!--        app:layout_constraintBottom_toBottomOf="@+id/save_button"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintTop_toTopOf="@+id/save_button" />-->
+    <!--</androidx.constraintlayout.widget.ConstraintLayout>-->

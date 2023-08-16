@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">FarmRecordsApp</string>
+    <string name="farm_operation_text">Enter farm operation</string>
+</resources>
